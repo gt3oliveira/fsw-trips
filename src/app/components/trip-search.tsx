@@ -2,10 +2,11 @@
 import CurrencyInput from "@/components/currency-input";
 import { DatePicker } from "@/components/date-picker";
 import Input from "@/components/input";
+import { Button } from "@/components/ui/button";
 
 export const TripSearch = () => {
   return (
-  <div className="container mx-auto p-5">
+  <div className="container mx-auto p-5 bg-[url(/world-map.png)] bg-no-repeat bg-cover bg-center">
     <h1 className="font-semibold text-2xl text-primary-darker text-center">
         Encontre sua <span className="text-g-primary">viagem!</span>
     </h1>
@@ -15,6 +16,8 @@ export const TripSearch = () => {
             <DatePicker />
             <CurrencyInput placeholder="Orcamento" />
         </div>
+
+        <Button className="bg-g-primary">Buscar</Button>
     </div>
   </div>
   )
