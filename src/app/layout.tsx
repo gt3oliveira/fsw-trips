@@ -10,7 +10,7 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "FSW Trips",
-  description: "A travel booking platform built with Full Stack Web Development.",
+  description: "Sistema de reservas de viagens.",
 };
 
 export default function RootLayout({
