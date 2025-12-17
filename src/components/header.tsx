@@ -20,11 +20,11 @@ export const Header = () => {
 
       {status === "unauthenticated" ? (
         <Button onClick={handleLoginClick}
-        variant={"ghost"}
-        className="text-g-primary font-semibold rounded-full"
-      >
-        Login
-      </Button>
+          variant={"ghost"}
+          className="text-g-primary font-semibold rounded-full"
+        >
+          Login
+        </Button>
       ) : (
         <DropdownSigOut
           imageSrc={data?.user?.image || "https://github.com/shadcn.png"}
