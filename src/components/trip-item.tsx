@@ -1,5 +1,5 @@
 import { Trip } from "@/generated/prisma/client";
-import { FormateCurrency } from "@/hooks/formated-currency";
+import { FormateCurrency } from "@/hooks/formate-currency";
 import Image from "next/image";
 import ReactCountryFlag from "react-country-flag";
 
