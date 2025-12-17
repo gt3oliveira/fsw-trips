@@ -6,19 +6,19 @@ import { Button } from "@/components/ui/button";
 
 export const TripSearch = () => {
   return (
-  <div className="container mx-auto p-5 bg-[url(/world-map.png)] bg-no-repeat bg-cover bg-center">
-    <h1 className="font-semibold text-2xl text-primary-darker text-center">
+    <div className="container mx-auto p-5 bg-[url(/world-map.png)] bg-no-repeat bg-cover bg-center">
+      <h1 className="font-semibold text-2xl text-primary-darker text-center">
         Encontre sua <span className="text-g-primary">viagem!</span>
-    </h1>
-    <div className="flex flex-col gap-4 mt-5">
+      </h1>
+      <div className="flex flex-col gap-4 mt-5">
         <Input placeholder="Onde você quer ir?" />
         <div className="flex gap-4">
-            <DatePicker />
-            <CurrencyInput placeholder="Orcamento" />
+          <DatePicker />
+          <CurrencyInput placeholder="Orcamento" />
         </div>
 
         <Button className="bg-g-primary">Buscar</Button>
+      </div>
     </div>
-  </div>
   )
 };
