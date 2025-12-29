@@ -11,7 +11,11 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
-export function DatePicker() {
+interface DatePickerProps {
+  placeholder?: string
+}
+
+export function DatePicker({ placeholder }: DatePickerProps) {
   const [open, setOpen] = React.useState(false)
   const [date, setDate] = React.useState<Date | undefined>(undefined)
 
@@ -24,7 +28,7 @@ export function DatePicker() {
             id="date"
             className="w-full justify-between font-normal focus:ring-1 focus:ring-g-primary"
           >
-            {date ? date.toLocaleDateString() : <p className="text-dark">Data de ida</p>}
+            {date ? date.toLocaleDateString() : <p className="text-dark">{placeholder}</p>}
             <ChevronDownIcon className={date ? "" : "text-dark"} />
           </Button>
         </PopoverTrigger>
