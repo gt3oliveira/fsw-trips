@@ -7,8 +7,8 @@ export const Footer = () => {
       <Link href="/">
         <Image src="/logo.svg" alt="FSW Trips" width={133} height={23} />
       </Link>
-      <p className="text-center text-sm text-primary-darker font-semibold">
-        Todos os direitos reservados
+      <p className="text-center text-sm text-primary-darker font-medium">
+        Todos os direitos reservados.
       </p>
     </div>
   );
