@@ -1,8 +1,9 @@
-'use client';
+"use client";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { DropdownSigOut } from "./dropdown-signout";
+import Link from "next/link";
 
 export const Header = () => {
   const { status, data } = useSession();
@@ -11,15 +12,13 @@ export const Header = () => {
 
   return (
     <div className="container mx-auto p-5 flex items-center justify-between">
-      <Image
-        src="/logo.svg"
-        alt="FSW Trips Logo"
-        width={183}
-        height={32}
-      />
+      <Link href="/">
+        <Image src="/logo.svg" alt="FSW Trips Logo" width={183} height={32} />
+      </Link>
 
       {status === "unauthenticated" ? (
-        <Button onClick={handleLoginClick}
+        <Button
+          onClick={handleLoginClick}
           variant={"ghost"}
           className="text-g-primary font-semibold rounded-full"
         >
@@ -33,5 +32,5 @@ export const Header = () => {
         />
       )}
     </div>
-  )
+  );
 };
