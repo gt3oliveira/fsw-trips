@@ -5,6 +5,8 @@ import ReactCountryFlag from "react-country-flag";
 import { TripReservation } from "./components/trip-reservation";
 import { Separator } from "@/components/ui/separator";
 import { TripDescription } from "./components/trip-description";
+import { TripHighlights } from "./components/trip-highlights";
+import { TripLocation } from "./components/trip-location";
 
 const getTripById = async (tripId: string) => {
   const trip = await prisma.trip.findUnique({
@@ -28,10 +30,11 @@ export default async function TripDetails({
   return (
     <div className="container mx-auto">
       <Image
-        src={trip.coverImage || ""}
-        alt={trip.name || "Trip Image"}
+        src={trip.coverImage}
+        alt={trip.name}
         width={800}
-        height={600}
+        height={0}
+        className="w-full sm:object-cover sm:h-[400px]"
       />
       <div className="flex flex-col p-5">
         <h1 className="font-semibold text-xl text-primary-darker">
@@ -48,9 +51,16 @@ export default async function TripDetails({
           <p className="text-xs text-gray-primary">por dia</p>
         </div>
 
-        <TripReservation trip={trip} />
-        <Separator className="my-5" />
-        <TripDescription description={trip.description} />
+        <div className="space-y-4 flex flex-col mt-4">
+          <TripReservation trip={trip} />
+          <Separator />
+          <TripDescription description={trip.description} />
+          <TripHighlights highlights={trip.highlights} />
+          <TripLocation
+            location={trip.location}
+            locationDescription={trip.locationDescription}
+          />
+        </div>
       </div>
     </div>
   );
