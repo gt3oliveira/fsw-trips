@@ -1,23 +1,30 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { ChevronDownIcon } from "lucide-react"
+import * as React from "react";
+import { ChevronDownIcon } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Calendar } from "@/components/ui/calendar"
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/components/ui/popover";
 
 interface DatePickerProps {
-  placeholder?: string
+  placeholder?: string;
+  startDate?: Date;
+  date: Date | undefined;
+  setDate: (date: Date | undefined) => void;
 }
 
-export function DatePicker({ placeholder }: DatePickerProps) {
-  const [open, setOpen] = React.useState(false)
-  const [date, setDate] = React.useState<Date | undefined>(undefined)
+export function DatePicker({
+  placeholder,
+  startDate,
+  date,
+  setDate,
+}: DatePickerProps) {
+  const [open, setOpen] = React.useState(false);
 
   return (
     <div className="flex flex-col gap-3 w-full">
@@ -28,7 +35,11 @@ export function DatePicker({ placeholder }: DatePickerProps) {
             id="date"
             className="w-full justify-between font-normal focus:ring-1 focus:ring-g-primary"
           >
-            {date ? date.toLocaleDateString() : <p className="text-dark">{placeholder}</p>}
+            {date ? (
+              date.toLocaleDateString()
+            ) : (
+              <p className="text-dark">{placeholder}</p>
+            )}
             <ChevronDownIcon className={date ? "" : "text-dark"} />
           </Button>
         </PopoverTrigger>
@@ -37,14 +48,18 @@ export function DatePicker({ placeholder }: DatePickerProps) {
             mode="single"
             selected={date}
             captionLayout="dropdown"
-            disabled={(date) => date < new Date()}
+            disabled={(date) =>
+              startDate
+                ? date <= startDate
+                : date < new Date(new Date().setHours(0, 0, 0, 0))
+            }
             onSelect={(date) => {
-              setDate(date)
-              setOpen(false)
+              setDate(date);
+              setOpen(false);
             }}
           />
         </PopoverContent>
       </Popover>
     </div>
-  )
+  );
 }
